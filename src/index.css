@@ -1,13 +1,203 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f7fafc; 
+  color: #2d3748; 
+  line-height: 1.6;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.json-editor-container {
+  width: 100%;
+  background-color: #edf2f7;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.json-editor-textarea {
+  width: 100%;
+  height: 400px;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  border: 2px solid #cbd5e0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  resize: none;
+}
+
+.json-editor-textarea:focus {
+  outline: none;
+  border-color: #4fd1c5; 
+}
+
+.form-preview-container {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  border: 2px solid #e2e8f0;
+  background-color: #fff;
+  color: #2d3748;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #38b2ac; 
+  outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #a0aec0;
+}
+
+/* Error state styling */
+.form-error {
+  font-size: 0.875rem;
+  color: #e53e3e;
+  margin-top: 0.25rem;
+}
+
+/* Success message styling */
+.success-message {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #48bb78;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  display: none;
+}
+
+.success-message.show {
+  display: block;
+}
+
+/* Error message styling */
+.error-message {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f56565;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* Submit button styling */
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #38b2ac;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #319795;
+}
+
+.submit-button:disabled {
+  background-color: #e2e8f0;
+  cursor: not-allowed;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .json-editor-container,
+  .form-preview-container {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .form-field {
+    margin-bottom: 1rem;
+  }
+
+  .json-editor-textarea {
+    height: 300px;
+  }
+
+  .submit-button {
+    font-size: 1.125rem;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .json-editor-container,
+  .form-preview-container {
+    width: 50%;
+  }
+
+  .form-label {
+    font-size: 1.2rem;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 1.1rem;
+  }
 }
